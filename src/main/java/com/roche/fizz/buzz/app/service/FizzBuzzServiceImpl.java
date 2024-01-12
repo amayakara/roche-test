@@ -19,14 +19,14 @@ public class FizzBuzzServiceImpl implements FizzBuzzService {
         validateArguments(int1, int2, str1, str2);
         return IntStream.rangeClosed(1, limit)
                 .mapToObj(v -> checkMultiples(int1, int2, str1, str2, v))
-                .toList();
+                .collect(Collectors.toList());
     }
 
     private FizzBuzzElement checkMultiples(Integer int1, Integer int2, String str1, String str2, int i) {
         if(i % (int1 * int2) == 0){
             return new FizzBuzzElement(str1+str2);
         } else if (i % int1 == 0) {
-            return new FizzBuzzElement(str2);
+            return new FizzBuzzElement(str1);
         } else if (i % int2 == 0) {
             return new FizzBuzzElement(str2);
         } else {
