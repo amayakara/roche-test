@@ -15,8 +15,10 @@ import java.util.stream.IntStream;
 public class FizzBuzzServiceImpl implements FizzBuzzService {
 
     @Override
-    public List<FizzBuzzElement> generateFizzBuzzList(Integer int1, Integer int2, Integer limit, String str1, String str2) throws Exception {
+    public List<FizzBuzzElement> generateFizzBuzzList(Integer int1, Integer int2, Integer limit, String str1, String str2) {
+        log.info("abcd");
         validateArguments(int1, int2, str1, str2);
+        log.info("efgh");
         return IntStream.rangeClosed(1, limit)
                 .mapToObj(v -> checkMultiples(int1, int2, str1, str2, v))
                 .collect(Collectors.toList());
@@ -37,11 +39,13 @@ public class FizzBuzzServiceImpl implements FizzBuzzService {
     private void validateArguments(int int1, int int2, String str1, String str2) {
         if (int1 == 0 || int2 == 0) {
             log.error("[ERROR] int1 = " + int1 + " or int2 = " + int2 + " is null");
-            throw new BadRequestException("int1 or int2 shouldn't be equal to zero");
+            //throw new BadRequestException("int1 or int2 shouldn't be equal to zero");
+            throw new IllegalArgumentException("int1 or int2 shouldn't be equal to zero");
         }
         if (ObjectUtils.isEmpty(str1) || ObjectUtils.isEmpty(str2)){
             log.error("[ERROR] str1 = " + str1 + " or str2 = " + str2 + " is null");
-            throw new BadRequestException("str1 or str2 shouldn't be empty");
+            //throw new BadRequestException("str1 or str2 shouldn't be empty");
+            throw new IllegalArgumentException("str1 or str2 shouldn't be empty");
         }
     }
 }

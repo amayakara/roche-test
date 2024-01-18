@@ -11,6 +11,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,6 +22,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/fizzbuzz")
 @Slf4j
+@Validated
 public class FizzBuzzController {
 
     @Autowired
@@ -35,11 +37,11 @@ public class FizzBuzzController {
 
     @GetMapping
     public FizzBuzzResponse generateFbList(
-            @RequestParam @Min(1) Integer int1,
-            @RequestParam @Min(1) Integer int2,
+            @RequestParam @Min(value = 1, message = "Value must be greater than one") Integer int1,
+            @RequestParam @Min(value = 1, message = "Value must be greater than one") Integer int2,
             @RequestParam @NotNull @Max(Integer.MAX_VALUE) Integer limit,
             @RequestParam @NotBlank String str1,
-            @RequestParam @NotBlank String str2) throws Exception {
+            @RequestParam @NotBlank String str2) {
 
         var statisticEndpoint = new StatisticEndpoint(new Parameters(int1, int2, limit, str1, str2), 1);
         statisticService.saveStatisticParameters(statisticEndpoint);

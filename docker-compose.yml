@@ -1,0 +1,26 @@
+version: '3.1'
+services:
+  rest-service:
+    image: fizzbuzz:0.0.3
+    container_name: fizzbuzz
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+
+  db:
+    image: 'postgres:14-alpine3.17'
+    container_name: postgresdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-U", "postgres" ]
+      interval: 5s
+      timeout: 1s
+      retries: 2

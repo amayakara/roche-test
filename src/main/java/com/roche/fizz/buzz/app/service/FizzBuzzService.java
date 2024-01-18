@@ -7,5 +7,5 @@ import java.util.List;
 @Service
 public interface FizzBuzzService {
 
-    List<FizzBuzzElement> generateFizzBuzzList(Integer int1, Integer int2, Integer limit, String str1, String str2) throws Exception;
+    List<FizzBuzzElement> generateFizzBuzzList(Integer int1, Integer int2, Integer limit, String str1, String str2);
 }
