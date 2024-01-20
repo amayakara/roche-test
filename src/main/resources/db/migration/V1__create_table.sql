@@ -3,7 +3,7 @@ CREATE TABLE statistic (
     occurences SMALLINT,
     first_integer SMALLINT,
     second_integer SMALLINT,
-    max_limit SMALLINT,
+    max_limit BIGINT,
     str1 VARCHAR(10),
     str2 VARCHAR(10)
 );
