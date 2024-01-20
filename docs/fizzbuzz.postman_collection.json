@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "e0e3c5ff-58fb-437d-b2f8-46e38c6a67b7",
+		"name": "fizzbuzz",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25998177"
+	},
+	"item": [
+		{
+			"name": "fizzbuzz",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/fizzbuzz?int1=3&int2=5&limit=100&str1=fizz&str2=buzz",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"fizzbuzz"
+					],
+					"query": [
+						{
+							"key": "int1",
+							"value": "3"
+						},
+						{
+							"key": "int2",
+							"value": "5"
+						},
+						{
+							"key": "limit",
+							"value": "100"
+						},
+						{
+							"key": "str1",
+							"value": "fizz"
+						},
+						{
+							"key": "str2",
+							"value": "buzz"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "invalidParams",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/fizzbuzz?int1=0&int2=5&limit=100&str1=fizz&str2=buzz",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"fizzbuzz"
+					],
+					"query": [
+						{
+							"key": "int1",
+							"value": "0"
+						},
+						{
+							"key": "int2",
+							"value": "5"
+						},
+						{
+							"key": "limit",
+							"value": "100"
+						},
+						{
+							"key": "str1",
+							"value": "fizz"
+						},
+						{
+							"key": "str2",
+							"value": "buzz"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "statistics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/fizzbuzz/statistic",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"fizzbuzz",
+						"statistic"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
